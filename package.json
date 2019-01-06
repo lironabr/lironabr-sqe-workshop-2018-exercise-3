@@ -1,0 +1,45 @@
+{
+  "name": "sample-project",
+  "version": "1.0.0",
+  "description": "* Use this project as a template.\r * Clone the project:\r     * Using user/password: `git clone https://github.com/aviram26/sqe-workshop-2018-sample-project.git` \r     * Using SSH key: `git clone git@github.com:aviram26/sqe-workshop-2018-sample-project.git`\r * Install all libraries run: `npm install`\r * For code parsing, this project uses the [Esprima](http://esprima.org/) library.\r     * See example usage in `src/js/code-analyzer.js`\r * Run the project:\r     * From the command-line run: `npm start`\r     * After the bundler is done, execute the `index.html` from your IDE (preferably `WebStorm`)\r     * Try the parser... \r * For testing, this project uses the [Mocha](https://mochajs.org/) library.\r     * From the command-line run: `npm run test`\r     * See example test in `test/code-analyzer.test.js`\r * For coverage, this project uses the [nyc](https://github.com/istanbuljs/nyc) library.\r     * From the command-line run: `npm run coverage`\r     * See the report file `coverage/coverage-summary.json`\r * For linting, this project uses the [ESLint](https://eslint.org/) library.\r     * From the command-line run: `npm run lint`\r     * See the report file `lint/eslint-report.json`",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run start:dev",
+    "start:dev": "webpack --watch",
+    "test:watch": "mocha-webpack --watch",
+    "test": "mocha-webpack --webpack-config webpack.test.config.js --reporter=json",
+    "coverage": "cross-env NODE_ENV=coverage nyc --reporter=json npm run test",
+    "lint": "eslint -f json -o ./lint/eslint-report.json src"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.js"
+    ],
+    "instrument": false,
+    "sourceMap": false
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "d3-graphviz": "^2.6.0",
+    "escodegen": "^1.11.0",
+    "esgraph": "^0.3.0",
+    "esprima": "^4.0.0",
+    "esprima-walk": "^0.1.0",
+    "jquery": "^3.3.1",
+    "viz.js": "^2.1.2"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "eslint": "^5.0.1",
+    "istanbul-instrumenter-loader": "^3.0.1",
+    "mocha": "^5.2.0",
+    "mocha-webpack": "^2.0.0-beta.0",
+    "nyc": "^12.0.2",
+    "webpack": "^4.12.2",
+    "webpack-cli": "^2.1.4"
+  },
+  "directories": {
+    "test": "test"
+  }
+}
